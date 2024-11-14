@@ -130,11 +130,8 @@ import { NotebookMultiDiffEditorInput } from './diff/notebookMultiDiffEditorInpu
 import { getFormattedMetadataJSON } from '../common/model/notebookCellTextModel.js';
 import { INotebookOutlineEntryFactory, NotebookOutlineEntryFactory } from './viewModel/notebookOutlineEntryFactory.js';
 import { getFormattedNotebookMetadataJSON } from '../common/model/notebookMetadataTextModel.js';
-import { NotebookChatEditorControllerContrib } from './chatEdit/notebookChatEditController.js';
+import { INotebookOriginalModelReferenceFactory, NotebookChatEditorControllerContrib, NotebookOriginalModelReferenceFactory } from './notebookChatEditController.js';
 import { registerNotebookContribution } from './notebookEditorExtensions.js';
-import { INotebookOriginalModelReferenceFactory, NotebookOriginalModelReferenceFactory } from './chatEdit/notebookOriginalModelRefFactory.js';
-import { INotebookModelSynchronizerFactory, NotebookModelSynchronizerFactory } from './chatEdit/notebookSynronizer.js';
-import { INotebookOriginalCellModelFactory, OriginalNotebookCellModelFactory } from './chatEdit/notebookOriginalCellModelFactory.js';
 
 /*--------------------------------------------------------------------------------------------- */
 
@@ -883,8 +880,6 @@ registerSingleton(INotebookOutlineEntryFactory, NotebookOutlineEntryFactory, Ins
 
 registerNotebookContribution(NotebookChatEditorControllerContrib.ID, NotebookChatEditorControllerContrib);
 registerSingleton(INotebookOriginalModelReferenceFactory, NotebookOriginalModelReferenceFactory, InstantiationType.Delayed);
-registerSingleton(INotebookModelSynchronizerFactory, NotebookModelSynchronizerFactory, InstantiationType.Delayed);
-registerSingleton(INotebookOriginalCellModelFactory, OriginalNotebookCellModelFactory, InstantiationType.Delayed);
 
 const schemas: IJSONSchemaMap = {};
 function isConfigurationPropertySchema(x: IConfigurationPropertySchema | { [path: string]: IConfigurationPropertySchema }): x is IConfigurationPropertySchema {
